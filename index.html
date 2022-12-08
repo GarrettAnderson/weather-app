@@ -21,8 +21,75 @@
         <link rel="stylesheet" href="./assets/css/style.css" />       
     </head>
     <body>
+        <header>
+            <h1>Weather Dashboard</h1>
+        </header>
+        <main class="row">
+            <aside class="col-12 col-md-3 col-lg-3">
+                    <h2><label for="search-for-city">Search for a City:</label></h2>
+                    <input  type="text" id="search-for-city" name="search-for-city" placeholder="Search for a City">
+                    <button id="search-city-button">Search</button>
+                    <hr>
+                    <ol id="list-of-cities">
+                    </ol>
+            </aside>
+                <section class="col-12 col-md-9 col-lg-9">
+                    <div class="row">
+                        <h2 id="current-city">Atlanta <span class="current-date">(9/13/2022)</span><span class="weather-icon">☀️</span></h2>
+                        <ol>
+                            <li>
+                                <p>Temp: <span class="current-temp">76.62F</span></p>
+                            </li>
+                            <li>
+                                <p>Wind: <span class="current-wind">8.43 MPH</span></p>
+                            </li>
+                            <li>
+                                <p>Humidity: <span class="current-humidity">44%</span></p>
+                            </li>
+                        </ol>
+                    </div>
 
-
+                    <div class="row">
+                        <h3>5-Day Forecase:</h3>
+                        <div class="row">
+                            <article class="card col-12 col-md-3 col-lg-3">
+                                <h4>9/14/2022</h4>
+                                <span class="forcast-weather-icon">☀️</span>
+                                <p>Temp: <span class="forcast-temp">63.55F</span></p>
+                                <p>Wind: <span class="forcast-wind">8.43 MPH</span></p>
+                                <p>Humidity: <span class="forcast-humidity">44%</span></p>
+                            </article>
+                            <article class="card col-12 col-md-3 col-lg-3">
+                                <h4>9/14/2022</h4>
+                                <span class="forcast-weather-icon">☀️</span>
+                                <p>Temp: <span class="forcast-temp">63.55F</span></p>
+                                <p>Wind: <span class="forcast-wind">8.43 MPH</span></p>
+                                <p>Humidity: <span class="forcast-humidity">44%</span></p>
+                            </article>
+                            <article class="card col-12 col-md-3 col-lg-3">
+                                <h4>9/14/2022</h4>
+                                <span class="forcast-weather-icon">☀️</span>
+                                <p>Temp: <span class="forcast-temp">63.55F</span></p>
+                                <p>Wind: <span class="forcast-wind">8.43 MPH</span></p>
+                                <p>Humidity: <span class="forcast-humidity">44%</span></p>
+                            </article>
+                            <article class="card col-12 col-md-3 col-lg-3">
+                                <h4>9/14/2022</h4>
+                                <span class="forcast-weather-icon">☀️</span>
+                                <p>Temp: <span class="forcast-temp">63.55F</span></p>
+                                <p>Wind: <span class="forcast-wind">8.43 MPH</span></p>
+                                <p>Humidity: <span class="forcast-humidity">44%</span></p>
+                            </article>
+                            <article class="card col-12 col-md-3 col-lg-3">
+                                <h4>9/14/2022</h4>
+                                <span class="forcast-weather-icon">☀️</span>
+                                <p>Temp: <span class="forcast-temp">63.55F</span></p>
+                                <p>Wind: <span class="forcast-wind">8.43 MPH</span></p>
+                                <p>Humidity: <span class="forcast-humidity">44%</span></p>
+                            </article>
+                        </div>
+                </section>
+        </main>
         <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
