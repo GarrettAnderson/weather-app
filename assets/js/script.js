@@ -36,11 +36,9 @@ function getCityCoords() {
       })
       .then(function (data) {
         console.log(data)
-
         // save the city lat and long to variables
         cityLat = data.city.coord.lat
         cityLong = data.city.coord.lon
-
         getCityWeather()
       })
 }
