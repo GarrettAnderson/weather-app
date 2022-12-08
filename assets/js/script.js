@@ -2,6 +2,14 @@ var cityName
 var cityLat
 var cityLong
 var cityData
+var currentWeatherDataObj
+var forcastWeatherDataObj
+var currentCityName = $("#current-city")
+var currentDate = $("#current-date")
+var currentWeatherIcon = $("#weather-icon")
+var currentTemp = $("#current-temp")
+var currentWind = $("#current-wind")
+var currentHumidity = $("#current-humidity")
 var listOfCities = $("#list-of-cities")
 var searchCityInput = $("#search-for-city")
 var searchCityBtn = $("#search-city-button")
@@ -56,6 +64,7 @@ function getCityWeather() {
         cityData = data
         console.log(cityData)
         currentCityList()
+        currentCityDataDisplay()
       })
 }
 
@@ -73,9 +82,53 @@ function currentCityList() {
 }
 
 function currentCityDataDisplay() {
+    console.log(cityData.current.dt)
+    var currentCityDate = dayjs.unix(cityData.current.dt).format("MM/DD/YYYY")
+    console.log(currentCityDate)
 
+    var currentWeatherIconImgSlug = cityData.current.weather[0].icon
+    var currentWeatherIconImg = `http://openweathermap.org/img/wn/${currentWeatherIconImgSlug}@2x.png`
+    console.log(currentWeatherIconImg)
+    
+    // current weather object to add to local storage
+    currentWeatherDataObj = {
+        city: cityName,
+        date: currentCityDate,
+        weatherIcon: currentWeatherIconImg,
+        temp: cityData.current.temp  + "℉",
+        wind: cityData.current.wind_speed + "MPH",
+        humidity: cityData.current.humidity + "%"
+    }
+
+    //  add to local storage
+    localStorage.setItem(cityName, JSON.stringify(currentWeatherDataObj))
+    
+    currentCityName.text(cityName)
+    currentDate.text("(" + currentCityDate + ")")
+    currentWeatherIcon.attr("src", currentWeatherIconImg)
+
+    currentTemp.text(cityData.current.temp + "℉")
+    currentWind.text(cityData.current.wind_speed + "MPH")
+    currentHumidity.text(cityData.current.humidity + "%")
+
+}   
+
+function getCurrentDataFromLocalStorage() {
+    var dataFromLocalStorage = []
+    for(var i = 0; i < localStorage.length; i++) {
+        dataFromLocalStorage.push(JSON.parse(localStorage.getItem(localStorage.key(i))))
+    }
+    // if (dataFromLocalStorage) {
+    //     dataFromLocalStorage = JSON.parse(dataFromLocalStorage)
+    // } else {
+    //     dataFromLocalStorage = []
+    // }
+    console.log(dataFromLocalStorage)
+    return dataFromLocalStorage
 }
 
+getCurrentDataFromLocalStorage()
 // when city button is clicked, get city data from local storage
 
+// when search button is clicked, get add city to list and get current and forecast weather data
 searchCityBtn.on('click', getCityCoords)

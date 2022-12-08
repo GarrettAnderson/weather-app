@@ -35,16 +35,23 @@
             </aside>
                 <section class="col-12 col-md-9 col-lg-9">
                     <div class="row">
-                        <h2 id="current-city">Atlanta <span class="current-date">(9/13/2022)</span><span class="weather-icon">☀️</span></h2>
+                        <div class="d-flex flex-row align-items-center">
+                            <h2 id="current-city"></h2>
+                            <h3 id="current-date"></h3>
+                            <img id="weather-icon"></img>
+                        </div>
                         <ol>
-                            <li>
-                                <p>Temp: <span class="current-temp">76.62F</span></p>
+                            <li class="d-flex flex-row align-items-center">
+                                <p>Temp: </p>
+                                <span id="current-temp"></span>
                             </li>
-                            <li>
-                                <p>Wind: <span class="current-wind">8.43 MPH</span></p>
+                            <li class="d-flex flex-row align-items-center">
+                                <p>Wind: </p>
+                                <span id="current-wind"></span>
                             </li>
-                            <li>
-                                <p>Humidity: <span class="current-humidity">44%</span></p>
+                            <li class="d-flex flex-row align-items-center">
+                                <p>Humidity: </p>
+                                <span id="current-humidity"></span>
                             </li>
                         </ol>
                     </div>
