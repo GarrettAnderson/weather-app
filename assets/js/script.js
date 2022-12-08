@@ -1,6 +1,8 @@
 var cityName
 var cityLat
 var cityLong
+var cityData
+var listOfCities = $("#list-of-cities")
 var searchCityInput = $("#search-for-city")
 var searchCityBtn = $("#search-city-button")
 var apiKey = "189a38ae6bf0bf147aa5670c0b4b70d5"
@@ -36,8 +38,6 @@ function getCityCoords() {
         console.log(data)
 
         // save the city lat and long to variables
-        // fetch weather data with lat and long variables
-
         cityLat = data.city.coord.lat
         cityLong = data.city.coord.lon
 
@@ -46,19 +46,38 @@ function getCityCoords() {
 }
 
 function getCityWeather() {
-
+    // fetch weather data with lat and long variables
     fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${cityLat}&lon=${cityLong}&exclude=minutely,hourly,alerts&appid=${apiKey}&units=imperial`)
       .then(function (response) {
         console.log(response)
         return response.json()
       })
       .then(function (data) {
-        console.log(data)
-
-        // save the city lat and long to variables
-        // fetch weather data with lat and long variables
-
+        // console.log(data)
+        
+        cityData = data
+        console.log(cityData)
+        currentCityList()
       })
 }
+
+// add city name to the list below the search bar
+// add current city data to the UI
+// set the current city and data to local storage
+
+function currentCityList() {
+    var citiesListDisplay = `
+    <li>
+        <button>${cityName}</button>
+    </li>
+    ` 
+    listOfCities.append(citiesListDisplay)
+}
+
+function currentCityDataDisplay() {
+
+}
+
+// when city button is clicked, get city data from local storage
 
 searchCityBtn.on('click', getCityCoords)
