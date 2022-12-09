@@ -174,7 +174,11 @@ function weatherForecastDisplayed() {
 function getCurrentDataFromLocalStorage() {
     dataFromLocalStorage = []
     for(var i = 0; i < localStorage.length; i++) {
-        dataFromLocalStorage.push(JSON.parse(localStorage.getItem(localStorage.key(i))))
+        // exclude the key that includes forecast
+        console.log(localStorage.key(i))
+        if (!localStorage.key(i).includes("forecast")) {
+            dataFromLocalStorage.push(JSON.parse(localStorage.getItem(localStorage.key(i))))
+        }
     }
     // if (dataFromLocalStorage) {
     //     dataFromLocalStorage = JSON.parse(dataFromLocalStorage)
@@ -186,9 +190,16 @@ function getCurrentDataFromLocalStorage() {
     currentCityListFromStorage()    
 }
 
+// get forecast data array from local storage
+function getForecastDataFromLocalStorage() {
+    var forecastDataFromLocalStorage = localStorage.getItem(cityNameForStorage)
+
+    console.log(forecastDataFromLocalStorage)
+}
 
 
 getCurrentDataFromLocalStorage()
+getForecastDataFromLocalStorage()
 // when city button is clicked, get city data from local storage
 
 // when search button is clicked, get add city to list and get current and forecast weather data
