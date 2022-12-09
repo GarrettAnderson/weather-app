@@ -2,9 +2,11 @@ var cityName
 var cityLat
 var cityLong
 var cityData
+var cityNameForStorage // variable to store cityName forecast string to call local storage
 var currentWeatherDataObj
 var forcastWeatherDataObj
-var dataFromLocalStorage
+var dataFromLocalStorage //this is current weather data from local storage
+var forecastDataForStorage // this is the array for forecast data from local storage
 var weatherForcastDisplay = $("#forcast-weather")
 var currentCityName = $("#current-city")
 var currentDate = $("#current-date")
@@ -129,26 +131,42 @@ function currentCityDataDisplay() {
 }   
 
 function weatherForecastDisplayed() {
-    var forecastDataForStorage = []
+    forecastDataForStorage = []
     // iterate through the first 5 forcast pieces of data
     for(var i = 1; i < 6; i++) {
         var forecastDailyDate = dayjs.unix(cityData.daily[i].dt).format("MM/DD/YYYY")
         console.log(forecastDailyDate)
 
+        var forecastWeatherIconImg = `http://openweathermap.org/img/wn/${cityData.daily[i].weather[0].icon}.png`
         // create an object for each forecast date and add to forecastDataForStorage array
+
+        var forecastDataForStorageObj = {
+            city: cityName,
+            date: forecastDailyDate,
+            weatherIcon: forecastWeatherIconImg,
+            temp: cityData.daily[i].temp.day  + "℉",
+            wind: cityData.daily[i].wind_speed + "MPH",
+            humidity: cityData.daily[i].humidity + "%"
+        }
+
+        forecastDataForStorage.push(forecastDataForStorageObj)
+        console.log(forecastDataForStorage)
 
         var singleForecastData = `
         <article class="card col-12 col-md-3 col-lg-3">
             <h4>${forecastDailyDate}</h4>
-            <img class="forcast-weather-icon" src="http://openweathermap.org/img/wn/${cityData.daily[i].weather[0].icon}.png">
-            <p>Temp: <span class="forcast-temp">63.55F</span></p>
-            <p>Wind: <span class="forcast-wind">8.43 MPH</span></p>
-            <p>Humidity: <span class="forcast-humidity">44%</span></p>
+            <img class="forcast-weather-icon" src="${forecastWeatherIconImg}">
+            <p>Temp: <span class="forcast-temp">${cityData.daily[i].temp.day}℉</span></p>
+            <p>Wind: <span class="forcast-wind">${cityData.daily[i].wind_speed}MPH</span></p>
+            <p>Humidity: <span class="forcast-humidity">${cityData.daily[i].humidity}%</span></p>
         </article>
         ` 
         weatherForcastDisplay.append(singleForecastData)
     }
 
+    // add array of forecast data to local storage
+    cityNameForStorage = cityName + "forecast"
+    localStorage.setItem(cityNameForStorage, JSON.stringify(forecastDataForStorage))
 }
 
 // get info from local storage and store in a variable as array
@@ -167,6 +185,8 @@ function getCurrentDataFromLocalStorage() {
     // return dataFromLocalStorage
     currentCityListFromStorage()    
 }
+
+
 
 getCurrentDataFromLocalStorage()
 // when city button is clicked, get city data from local storage
