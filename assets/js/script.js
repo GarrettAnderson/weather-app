@@ -4,6 +4,7 @@ var cityLong
 var cityData
 var currentWeatherDataObj
 var forcastWeatherDataObj
+var dataFromLocalStorage
 var currentCityName = $("#current-city")
 var currentDate = $("#current-date")
 var currentWeatherIcon = $("#weather-icon")
@@ -81,6 +82,18 @@ function currentCityList() {
     listOfCities.append(citiesListDisplay)
 }
 
+// list out the cities from local storage to the cities list
+function currentCityListFromStorage() {
+    for(var i = 0; i < dataFromLocalStorage.length; i++) {
+        var citiesListDisplayFromStorage = `
+            <li>
+                <button>${dataFromLocalStorage[i].city}</button>
+            </li>
+            ` 
+        listOfCities.append(citiesListDisplayFromStorage)
+    }
+}
+
 function currentCityDataDisplay() {
     console.log(cityData.current.dt)
     var currentCityDate = dayjs.unix(cityData.current.dt).format("MM/DD/YYYY")
@@ -113,8 +126,10 @@ function currentCityDataDisplay() {
 
 }   
 
+// get info from local storage and store in a variable as array
+// then call function that appends the list of city names
 function getCurrentDataFromLocalStorage() {
-    var dataFromLocalStorage = []
+    dataFromLocalStorage = []
     for(var i = 0; i < localStorage.length; i++) {
         dataFromLocalStorage.push(JSON.parse(localStorage.getItem(localStorage.key(i))))
     }
@@ -124,7 +139,8 @@ function getCurrentDataFromLocalStorage() {
     //     dataFromLocalStorage = []
     // }
     console.log(dataFromLocalStorage)
-    return dataFromLocalStorage
+    // return dataFromLocalStorage
+    currentCityListFromStorage()    
 }
 
 getCurrentDataFromLocalStorage()
