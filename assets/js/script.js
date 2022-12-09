@@ -67,6 +67,7 @@ function getCityWeather() {
         console.log(cityData)
         currentCityList()
         currentCityDataDisplay()
+        weatherForecastDisplayed()
       })
 }
 
@@ -127,19 +128,24 @@ function currentCityDataDisplay() {
 
 }   
 
-function weatherForcastDisplayed() {
+function weatherForecastDisplayed() {
 
-    var singleForcastData = `
-    <article class="card col-12 col-md-3 col-lg-3">
-        <h4>9/14/2022</h4>
-        <span class="forcast-weather-icon">☀️</span>
-        <p>Temp: <span class="forcast-temp">63.55F</span></p>
-        <p>Wind: <span class="forcast-wind">8.43 MPH</span></p>
-        <p>Humidity: <span class="forcast-humidity">44%</span></p>
-    </article>
-    `
+    // iterate through the first 5 forcast pieces of data
+    for(var i = 1; i < 6; i++) {
+        var forecastDailyDate = dayjs.unix(cityData.daily[i].dt).format("MM/DD/YYYY")
+        console.log(forecastDailyDate)
+        var singleForecastData = `
+        <article class="card col-12 col-md-3 col-lg-3">
+            <h4>${forecastDailyDate}</h4>
+            <span class="forcast-weather-icon">☀️</span>
+            <p>Temp: <span class="forcast-temp">63.55F</span></p>
+            <p>Wind: <span class="forcast-wind">8.43 MPH</span></p>
+            <p>Humidity: <span class="forcast-humidity">44%</span></p>
+        </article>
+        ` 
+        weatherForcastDisplay.append(singleForecastData)
+    }
 
-    weatherForcastDisplay.append(singleForcastData)
 }
 
 // get info from local storage and store in a variable as array
