@@ -1,0 +1,5 @@
+/* reduce the size of the weather icon in forecast data */
+img.forcast-weather-icon {
+    height: 20%;
+    width: 20%;
+}

@@ -129,15 +129,18 @@ function currentCityDataDisplay() {
 }   
 
 function weatherForecastDisplayed() {
-
+    var forecastDataForStorage = []
     // iterate through the first 5 forcast pieces of data
     for(var i = 1; i < 6; i++) {
         var forecastDailyDate = dayjs.unix(cityData.daily[i].dt).format("MM/DD/YYYY")
         console.log(forecastDailyDate)
+
+        // create an object for each forecast date and add to forecastDataForStorage array
+
         var singleForecastData = `
         <article class="card col-12 col-md-3 col-lg-3">
             <h4>${forecastDailyDate}</h4>
-            <span class="forcast-weather-icon">☀️</span>
+            <img class="forcast-weather-icon" src="http://openweathermap.org/img/wn/${cityData.daily[i].weather[0].icon}.png">
             <p>Temp: <span class="forcast-temp">63.55F</span></p>
             <p>Wind: <span class="forcast-wind">8.43 MPH</span></p>
             <p>Humidity: <span class="forcast-humidity">44%</span></p>
@@ -170,3 +173,8 @@ getCurrentDataFromLocalStorage()
 
 // when search button is clicked, get add city to list and get current and forecast weather data
 searchCityBtn.on('click', getCityCoords)
+
+
+// NOTES for edge cases
+// conditional statement on search button to pull data from local storage if searched city is already in local storage
+// update the search text to have a capitalized first letter
