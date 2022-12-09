@@ -5,6 +5,7 @@ var cityData
 var currentWeatherDataObj
 var forcastWeatherDataObj
 var dataFromLocalStorage
+var weatherForcastDisplay = $("#forcast-weather")
 var currentCityName = $("#current-city")
 var currentDate = $("#current-date")
 var currentWeatherIcon = $("#weather-icon")
@@ -125,6 +126,21 @@ function currentCityDataDisplay() {
     currentHumidity.text(cityData.current.humidity + "%")
 
 }   
+
+function weatherForcastDisplayed() {
+
+    var singleForcastData = `
+    <article class="card col-12 col-md-3 col-lg-3">
+        <h4>9/14/2022</h4>
+        <span class="forcast-weather-icon">☀️</span>
+        <p>Temp: <span class="forcast-temp">63.55F</span></p>
+        <p>Wind: <span class="forcast-wind">8.43 MPH</span></p>
+        <p>Humidity: <span class="forcast-humidity">44%</span></p>
+    </article>
+    `
+
+    weatherForcastDisplay.append(singleForcastData)
+}
 
 // get info from local storage and store in a variable as array
 // then call function that appends the list of city names
