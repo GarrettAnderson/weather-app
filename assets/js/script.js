@@ -192,17 +192,31 @@ function getCurrentDataFromLocalStorage() {
     currentCityListFromStorage()    
 }
 
-// get forecast data array from local storage
+// get forecast data array from local storage and print to UI
 function getForecastDataFromLocalStorage(city) {
     console.log(city)
-    var forecastDataFromLocalStorage = JSON.parse(localStorage.getItem(city))
+    var cityNameForecastFromStorage = city + "forecast"
+    var forecastDataFromLocalStorage = JSON.parse(localStorage.getItem(cityNameForecastFromStorage))
 
     console.log(forecastDataFromLocalStorage)
+
+    for(var i = 0; i < forecastDataFromLocalStorage.length; i++) {
+        var singleForecastDataFromStorage = `
+        <article class="card col-12 col-md-3 col-lg-3">
+            <h4>${forecastDataFromLocalStorage[i].date}</h4>
+            <img class="forcast-weather-icon" src="${forecastDataFromLocalStorage[i].weatherIcon}">
+            <p>Temp: <span class="forcast-temp">${forecastDataFromLocalStorage[i].temp}℉</span></p>
+            <p>Wind: <span class="forcast-wind">${forecastDataFromLocalStorage[i].wind}MPH</span></p>
+            <p>Humidity: <span class="forcast-humidity">${forecastDataFromLocalStorage[i].humidity}%</span></p>
+        </article>
+        ` 
+        weatherForcastDisplay.append(singleForecastDataFromStorage)
+    }
 }
 
 
 getCurrentDataFromLocalStorage()
-// when city button is clicked, get city data from local storage
+// when city button is clicked, get city data from local storage current and forecast
 console.log(listOfCities)
 listOfCities.on('click', function(e) {
     if (e.target.classList.contains('list-of-cities-btn')) {
