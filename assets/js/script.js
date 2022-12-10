@@ -3,6 +3,7 @@ var cityLat
 var cityLong
 var cityData
 var cityNameForStorage // variable to store cityName forecast string to call local storage
+var forecastDataForStorageObj
 var currentWeatherDataObj
 var forcastWeatherDataObj
 var dataFromLocalStorage //this is current weather data from local storage
@@ -77,10 +78,11 @@ function getCityWeather() {
 // add current city data to the UI
 // set the current city and data to local storage
 
+// add a city button to list after search button is clicked
 function currentCityList() {
     var citiesListDisplay = `
     <li>
-        <button>${cityName}</button>
+        <button class="list-of-cities-btn>${cityName}</button>
     </li>
     ` 
     listOfCities.append(citiesListDisplay)
@@ -91,7 +93,7 @@ function currentCityListFromStorage() {
     for(var i = 0; i < dataFromLocalStorage.length; i++) {
         var citiesListDisplayFromStorage = `
             <li>
-                <button>${dataFromLocalStorage[i].city}</button>
+                <button class="list-of-cities-btn">${dataFromLocalStorage[i].city}</button>
             </li>
             ` 
         listOfCities.append(citiesListDisplayFromStorage)
@@ -140,7 +142,7 @@ function weatherForecastDisplayed() {
         var forecastWeatherIconImg = `http://openweathermap.org/img/wn/${cityData.daily[i].weather[0].icon}.png`
         // create an object for each forecast date and add to forecastDataForStorage array
 
-        var forecastDataForStorageObj = {
+        forecastDataForStorageObj = {
             city: cityName,
             date: forecastDailyDate,
             weatherIcon: forecastWeatherIconImg,
@@ -191,17 +193,24 @@ function getCurrentDataFromLocalStorage() {
 }
 
 // get forecast data array from local storage
-function getForecastDataFromLocalStorage() {
-    var forecastDataFromLocalStorage = localStorage.getItem(cityNameForStorage)
+function getForecastDataFromLocalStorage(city) {
+    console.log(city)
+    var forecastDataFromLocalStorage = JSON.parse(localStorage.getItem(city))
 
     console.log(forecastDataFromLocalStorage)
 }
 
 
 getCurrentDataFromLocalStorage()
-getForecastDataFromLocalStorage()
 // when city button is clicked, get city data from local storage
-
+console.log(listOfCities)
+listOfCities.on('click', function(e) {
+    if (e.target.classList.contains('list-of-cities-btn')) {
+        console.log(e.target.innerHTML)
+        var cityNameFromStorage = e.target.innerHTML
+        getForecastDataFromLocalStorage(cityNameFromStorage)
+    }
+})
 // when search button is clicked, get add city to list and get current and forecast weather data
 searchCityBtn.on('click', getCityCoords)
 
