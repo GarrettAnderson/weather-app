@@ -119,7 +119,7 @@ function currentCityDataDisplay() {
         humidity: cityData.current.humidity + "%"
     }
 
-    //  add to local storage
+    //  add city object to local storage
     localStorage.setItem(cityName, JSON.stringify(currentWeatherDataObj))
     
     currentCityName.text(cityName)
@@ -173,7 +173,7 @@ function weatherForecastDisplayed() {
 
 // get info from local storage and store in a variable as array
 // then call function that appends the list of city names
-function getCurrentDataFromLocalStorage() {
+function getCityListFromLocalStorage() {
     dataFromLocalStorage = []
     for(var i = 0; i < localStorage.length; i++) {
         // exclude the key that includes forecast
@@ -200,14 +200,27 @@ function getForecastDataFromLocalStorage(city) {
 
     console.log(forecastDataFromLocalStorage)
 
+    // show current weather data from storage
+    var showCurrentDataFromStorage = JSON.parse(localStorage.getItem(city))
+    console.log(showCurrentDataFromStorage)
+
+    currentCityName.text(showCurrentDataFromStorage.city)
+    currentDate.text("(" + showCurrentDataFromStorage.date + ")")
+    currentWeatherIcon.attr("src", showCurrentDataFromStorage.weatherIcon)
+
+    currentTemp.text(showCurrentDataFromStorage.temp + "℉")
+    currentWind.text(showCurrentDataFromStorage.wind + "MPH")
+    currentHumidity.text(showCurrentDataFromStorage.humidity + "%")
+
+    // show the forecast data from local storage
     for(var i = 0; i < forecastDataFromLocalStorage.length; i++) {
         var singleForecastDataFromStorage = `
         <article class="card col-12 col-md-3 col-lg-3">
             <h4>${forecastDataFromLocalStorage[i].date}</h4>
             <img class="forcast-weather-icon" src="${forecastDataFromLocalStorage[i].weatherIcon}">
-            <p>Temp: <span class="forcast-temp">${forecastDataFromLocalStorage[i].temp}℉</span></p>
-            <p>Wind: <span class="forcast-wind">${forecastDataFromLocalStorage[i].wind}MPH</span></p>
-            <p>Humidity: <span class="forcast-humidity">${forecastDataFromLocalStorage[i].humidity}%</span></p>
+            <p>Temp: <span class="forcast-temp">${forecastDataFromLocalStorage[i].temp}</span></p>
+            <p>Wind: <span class="forcast-wind">${forecastDataFromLocalStorage[i].wind}</span></p>
+            <p>Humidity: <span class="forcast-humidity">${forecastDataFromLocalStorage[i].humidity}</span></p>
         </article>
         ` 
         weatherForcastDisplay.append(singleForecastDataFromStorage)
@@ -215,7 +228,7 @@ function getForecastDataFromLocalStorage(city) {
 }
 
 
-getCurrentDataFromLocalStorage()
+getCityListFromLocalStorage()
 // when city button is clicked, get city data from local storage current and forecast
 console.log(listOfCities)
 listOfCities.on('click', function(e) {
