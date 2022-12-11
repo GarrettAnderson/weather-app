@@ -82,7 +82,7 @@ function getCityWeather() {
 function currentCityList() {
     var citiesListDisplay = `
     <li>
-        <button class="list-of-cities-btn>${cityName}</button>
+        <button>${cityName}</button>
     </li>
     ` 
     listOfCities.append(citiesListDisplay)
@@ -208,9 +208,9 @@ function getForecastDataFromLocalStorage(city) {
     currentDate.text("(" + showCurrentDataFromStorage.date + ")")
     currentWeatherIcon.attr("src", showCurrentDataFromStorage.weatherIcon)
 
-    currentTemp.text(showCurrentDataFromStorage.temp + "℉")
-    currentWind.text(showCurrentDataFromStorage.wind + "MPH")
-    currentHumidity.text(showCurrentDataFromStorage.humidity + "%")
+    currentTemp.text(showCurrentDataFromStorage.temp)
+    currentWind.text(showCurrentDataFromStorage.wind)
+    currentHumidity.text(showCurrentDataFromStorage.humidity)
 
     // show the forecast data from local storage
     for(var i = 0; i < forecastDataFromLocalStorage.length; i++) {
