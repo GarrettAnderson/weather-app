@@ -4,6 +4,15 @@ header {
     color: white;
 }
 
+.city-search-btn {
+    background-color: #6991E3;
+    border-color: #6991E3;
+    border-radius: 5px;
+    margin: 5px 0;
+    color: white;
+    
+}
+
 #list-of-cities {
     list-style: none;
     padding: 0;
@@ -11,10 +20,12 @@ header {
 
 #list-of-cities li {
     text-align: center;
+    margin-bottom: 5px;
 }
 
 #list-of-cities button {
     width: 80%;
+    border-radius: 5px;
 }
 
 /* reduce the size of the weather icon in forecast data */
