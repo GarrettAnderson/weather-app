@@ -1,3 +1,9 @@
+header {
+    background: rgb(71,90,184);
+    background: linear-gradient(90deg, rgba(71,90,184,1) 0%, rgba(38,19,96,1) 100%);
+    color: white;
+}
+
 #list-of-cities {
     list-style: none;
     padding: 0;
@@ -20,4 +26,6 @@ img.forcast-weather-icon {
 /* add margin to the articles in forecast weather data */
 #forecast-weather article {
     margin: 5px;
+    background-color: #323D4F;
+    color: white
 }
