@@ -133,6 +133,7 @@ function currentCityDataDisplay() {
 }   
 
 function weatherForecastDisplayed() {
+    weatherForcastDisplay.empty()
     forecastDataForStorage = []
     // iterate through the first 5 forcast pieces of data
     for(var i = 1; i < 6; i++) {
