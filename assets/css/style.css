@@ -1,3 +1,16 @@
+#list-of-cities {
+    list-style: none;
+    padding: 0;
+}
+
+#list-of-cities li {
+    text-align: center;
+}
+
+#list-of-cities button {
+    width: 80%;
+}
+
 /* reduce the size of the weather icon in forecast data */
 img.forcast-weather-icon {
     height: 20%;

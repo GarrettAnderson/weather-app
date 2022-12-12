@@ -20,12 +20,12 @@
     />
         <link rel="stylesheet" href="./assets/css/style.css" />       
     </head>
-    <body>
-        <header>
+    <body class="vw-100">
+        <header class="d-flex justify-content-center">
             <h1>Weather Dashboard</h1>
         </header>
         <main class="row">
-            <aside class="container col-12 col-md-3 col-lg-3 d-flex flex-column">
+            <aside class="container col-12 col-md-3 col-lg-3 d-flex flex-column w-80 p-3">
                     <h2><label for="search-for-city">Search for a City:</label></h2>
                     <input  type="text" id="search-for-city" name="search-for-city" placeholder="Search for a City">
                     <button id="search-city-button">Search</button>
@@ -33,7 +33,7 @@
                     <ol id="list-of-cities">
                     </ol>
             </aside>
-            <section class="container col-12 col-md-9 col-lg-9">
+            <section class="container col-12 col-md-9 col-lg-9 w-90">
                 <div class="row border container">
                     <div class="d-flex flex-row align-items-center">
                         <h2 id="current-city"></h2>
