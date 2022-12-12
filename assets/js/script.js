@@ -8,7 +8,7 @@ var currentWeatherDataObj
 var forcastWeatherDataObj
 var dataFromLocalStorage //this is current weather data from local storage
 var forecastDataForStorage // this is the array for forecast data from local storage
-var weatherForcastDisplay = $("#forcast-weather")
+var weatherForcastDisplay = $("#forecast-weather")
 var currentCityName = $("#current-city")
 var currentDate = $("#current-date")
 var currentWeatherIcon = $("#weather-icon")
@@ -156,7 +156,7 @@ function weatherForecastDisplayed() {
         console.log(forecastDataForStorage)
 
         var singleForecastData = `
-        <article class="card col-12 col-md-3 col-lg-3">
+        <article class="card col-12 col-md-3 col-lg-3 forecast-card">
             <h4>${forecastDailyDate}</h4>
             <img class="forcast-weather-icon" src="${forecastWeatherIconImg}">
             <p>Temp: <span class="forcast-temp">${cityData.daily[i].temp.day}℉</span></p>
