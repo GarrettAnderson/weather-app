@@ -182,22 +182,18 @@ function getCityListFromLocalStorage() {
             dataFromLocalStorage.push(JSON.parse(localStorage.getItem(localStorage.key(i))))
         }
     }
-    // if (dataFromLocalStorage) {
-    //     dataFromLocalStorage = JSON.parse(dataFromLocalStorage)
-    // } else {
-    //     dataFromLocalStorage = []
-    // }
+
     console.log(dataFromLocalStorage)
-    // return dataFromLocalStorage
     currentCityListFromStorage()    
 }
 
 // get forecast data array from local storage and print to UI
 function getForecastDataFromLocalStorage(city) {
+    weatherForcastDisplay.empty()
     console.log(city)
     var cityNameForecastFromStorage = city + "forecast"
     var forecastDataFromLocalStorage = JSON.parse(localStorage.getItem(cityNameForecastFromStorage))
-
+    console.log(cityNameForecastFromStorage)
     console.log(forecastDataFromLocalStorage)
 
     // show current weather data from storage
@@ -231,6 +227,9 @@ function getForecastDataFromLocalStorage(city) {
 getCityListFromLocalStorage()
 // when city button is clicked, get city data from local storage current and forecast
 console.log(listOfCities)
+
+// create a for loop to iterate the array of list of citties that were searched to apply a click event to each city button
+
 listOfCities.on('click', function(e) {
     if (e.target.classList.contains('list-of-cities-btn')) {
         console.log(e.target.innerHTML)
