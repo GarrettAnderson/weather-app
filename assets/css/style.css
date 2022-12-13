@@ -1,0 +1,47 @@
+header {
+    background: rgb(71,90,184);
+    background: linear-gradient(90deg, rgba(71,90,184,1) 0%, rgba(38,19,96,1) 100%);
+    color: white;
+}
+
+.city-search-btn {
+    background-color: #6991E3;
+    border-color: #6991E3;
+    border-radius: 5px;
+    margin: 5px 0;
+    color: white;
+    
+}
+
+.city-search-btn:hover,
+#list-of-cities button:hover {
+    transform: scale(0.95)
+}
+
+#list-of-cities {
+    list-style: none;
+    padding: 0;
+}
+
+#list-of-cities li {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+#list-of-cities button {
+    width: 80%;
+    border-radius: 5px;
+}
+
+/* reduce the size of the weather icon in forecast data */
+img.forcast-weather-icon {
+    height: 20%;
+    width: 20%;
+}
+
+/* add margin to the articles in forecast weather data */
+#forecast-weather article {
+    margin: 5px;
+    background-color: rgb(105, 145, 227);
+    color: white
+}
