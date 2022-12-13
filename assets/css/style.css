@@ -13,7 +13,8 @@ header {
     
 }
 
-.city-search-btn:hover {
+.city-search-btn:hover,
+#list-of-cities button:hover {
     transform: scale(0.95)
 }
 
@@ -41,6 +42,6 @@ img.forcast-weather-icon {
 /* add margin to the articles in forecast weather data */
 #forecast-weather article {
     margin: 5px;
-    background-color: #323D4F;
+    background-color: rgb(105, 145, 227);
     color: white
 }
