@@ -54,6 +54,9 @@ function getCityCoords() {
         cityLong = data.city.coord.lon
         getCityWeather()
       })
+      .catch(function (error) {
+        alert(error);
+      });
 }
 
 function getCityWeather() {
