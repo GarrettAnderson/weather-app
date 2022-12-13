@@ -19,7 +19,6 @@ var listOfCities = $("#list-of-cities")
 var searchCityInput = $("#search-for-city")
 var searchCityBtn = $("#search-city-button")
 var apiKey = "189a38ae6bf0bf147aa5670c0b4b70d5"
-var cityCoords = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}`
 var cityWeather = `https://api.openweathermap.org/data/2.5/forecast?lat=${cityLat}&lon=${cityLong}&appid=${apiKey}`
 
 
@@ -37,12 +36,14 @@ var cityWeather = `https://api.openweathermap.org/data/2.5/forecast?lat=${cityLa
     // get the lat and long coords of city in a variable
 
 function getCityCoords() {
+
     // set a catch statement for error handling
     // set conditional to handle when search button is clicked if there is no input city
-
+    
     cityName = searchCityInput.val()
     console.log(cityName)
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}`)
+    var cityCoords = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}`
+    fetch(cityCoords)
       .then(function (response) {
         console.log(response)
         return response.json()
