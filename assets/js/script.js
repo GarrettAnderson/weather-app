@@ -160,13 +160,15 @@ function weatherForecastDisplayed() {
         console.log(forecastDataForStorage)
 
         var singleForecastData = `
-        <article class="card col-12 col-md-3 col-lg-3 forecast-card">
-            <h4>${forecastDailyDate}</h4>
-            <img class="forcast-weather-icon" src="${forecastWeatherIconImg}">
-            <p>Temp: <span class="forcast-temp">${cityData.daily[i].temp.day}℉</span></p>
-            <p>Wind: <span class="forcast-wind">${cityData.daily[i].wind_speed}MPH</span></p>
-            <p>Humidity: <span class="forcast-humidity">${cityData.daily[i].humidity}%</span></p>
-        </article>
+        <li class="card col-12 col-md-3 col-lg-3 forecast-card">
+            <article>
+                <h4>${forecastDailyDate}</h4>
+                <img class="forcast-weather-icon" src="${forecastWeatherIconImg}">
+                <p>Temp: <span class="forcast-temp">${cityData.daily[i].temp.day}℉</span></p>
+                <p>Wind: <span class="forcast-wind">${cityData.daily[i].wind_speed}MPH</span></p>
+                <p>Humidity: <span class="forcast-humidity">${cityData.daily[i].humidity}%</span></p>
+            </article>
+        </li>
         ` 
         weatherForcastDisplay.append(singleForecastData)
     }
@@ -216,13 +218,15 @@ function getForecastDataFromLocalStorage(city) {
     // show the forecast data from local storage
     for(var i = 0; i < forecastDataFromLocalStorage.length; i++) {
         var singleForecastDataFromStorage = `
-        <article class="card col-12 col-md-3 col-lg-3">
-            <h4>${forecastDataFromLocalStorage[i].date}</h4>
-            <img class="forcast-weather-icon" src="${forecastDataFromLocalStorage[i].weatherIcon}">
-            <p>Temp: <span class="forcast-temp">${forecastDataFromLocalStorage[i].temp}</span></p>
-            <p>Wind: <span class="forcast-wind">${forecastDataFromLocalStorage[i].wind}</span></p>
-            <p>Humidity: <span class="forcast-humidity">${forecastDataFromLocalStorage[i].humidity}</span></p>
-        </article>
+        <li class="card col-12 col-md-3 col-lg-3">
+            <article>
+                <h4>${forecastDataFromLocalStorage[i].date}</h4>
+                <img class="forcast-weather-icon" src="${forecastDataFromLocalStorage[i].weatherIcon}">
+                <p>Temp: <span class="forcast-temp">${forecastDataFromLocalStorage[i].temp}</span></p>
+                <p>Wind: <span class="forcast-wind">${forecastDataFromLocalStorage[i].wind}</span></p>
+                <p>Humidity: <span class="forcast-humidity">${forecastDataFromLocalStorage[i].humidity}</span></p>
+            </article>
+        </li>
         ` 
         weatherForcastDisplay.append(singleForecastDataFromStorage)
     }
