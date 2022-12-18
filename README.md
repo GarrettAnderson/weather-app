@@ -3,7 +3,7 @@ An app that displays weather data.
 
 ## Description
 
-This is a project that allows a user to look up the weather conditions in a specific city. User is able to enter a city and press a search button to get the current weather and five day future forecast for that city. The city is saved in local host to be  
+This is a project that allows a user to look up the weather conditions in a specific city. User is able to enter a city and press a search button to get the current weather and five day future forecast for that city. The city is saved in local storage to be accessed at a later time period.
 
 ## Installation
 
@@ -11,9 +11,9 @@ Just need to download the source files from the github repository onto local. Op
 
 ## Usage
 
+This is a project that allows a user to look up the weather conditions in a specific city. User is able to enter a city and press a search button to get the current weather and five day future forecast for that city. The city is saved in local storage to be accessed at a later time period.
 
-
-To view this application on Github Pages click [here](https://github.com/GarrettAnderson/workday-calendar).
+To view this application on Github Pages click [here](https://github.com/GarrettAnderson/weather-app).
 
 Below are screenshots of the project:
 
