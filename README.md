@@ -3,7 +3,7 @@ An app that displays weather data.
 
 ## Description
 
-This is a project that allows a user to add events to a workday calendar. 
+This is a project that allows a user to look up the weather conditions in a specific city. User is able to enter a city and press a search button to get the current weather and five day future forecast for that city. The city is saved in local host to be  
 
 ## Installation
 
@@ -17,9 +17,7 @@ To view this application on Github Pages click [here](https://github.com/Garrett
 
 Below are screenshots of the project:
 
-![](assets/images/.png)
-
-![](assets/images/.png)
+![](assets/images/screenshot.png)
 
 
 ## Credits

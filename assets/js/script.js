@@ -181,10 +181,14 @@ function weatherForecastDisplayed() {
 // get info from local storage and store in a variable as array
 // then call function that appends the list of city names
 function getCityListFromLocalStorage() {
+    if (localStorage.length === null) {
+        console.log('local storage empty')
+        return
+    }
     dataFromLocalStorage = []
     for(var i = 0; i < localStorage.length; i++) {
         // exclude the key that includes forecast
-        console.log(localStorage.key(i))
+        // console.log(localStorage.key(i))
         if (!localStorage.key(i).includes("forecast")) {
             dataFromLocalStorage.push(JSON.parse(localStorage.getItem(localStorage.key(i))))
         }
