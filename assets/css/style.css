@@ -40,7 +40,7 @@ img.forcast-weather-icon {
 }
 
 /* add margin to the articles in forecast weather data */
-#forecast-weather article {
+#forecast-weather li {
     margin: 5px;
     background-color: rgb(105, 145, 227);
     color: white
