@@ -188,7 +188,8 @@ function getCityListFromLocalStorage() {
     dataFromLocalStorage = []
     for(var i = 0; i < localStorage.length; i++) {
         // exclude the key that includes forecast
-        // console.log(localStorage.key(i))
+        console.log(localStorage.key(i))
+        console.log(JSON.parse(localStorage.getItem(localStorage.key(i))))
         if (!localStorage.key(i).includes("forecast")) {
             dataFromLocalStorage.push(JSON.parse(localStorage.getItem(localStorage.key(i))))
         }
