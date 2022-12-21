@@ -75,7 +75,6 @@ function getCityWeather() {
         currentCityList()
         currentCityDataDisplay()
         weatherForecastDisplayed()
-
       })
 }
 
